@@ -1,4 +1,4 @@
-package xyz.compute;
+package xyz.loverbaby;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

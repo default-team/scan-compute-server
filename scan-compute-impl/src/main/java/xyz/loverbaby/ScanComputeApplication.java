@@ -1,4 +1,4 @@
-package xyz.compute;
+package xyz.loverbaby;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
