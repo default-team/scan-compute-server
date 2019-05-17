@@ -2,7 +2,7 @@ package xyz.loverbaby.impl.facade;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
-import xyz.loverbaby.api.dto.BuildRecordFacade;
+import xyz.loverbaby.api.BuildRecordFacade;
 import xyz.loverbaby.api.dto.common.CommonResult;
 import xyz.loverbaby.api.dto.request.BuildRecordAddRequest;
 import xyz.loverbaby.impl.biz.manager.BuildRecordBiz;
