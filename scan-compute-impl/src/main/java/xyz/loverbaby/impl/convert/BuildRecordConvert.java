@@ -2,9 +2,11 @@ package xyz.loverbaby.impl.convert;
 
 import org.springframework.beans.BeanUtils;
 import xyz.loverbaby.api.dto.request.BuildRecordAddRequest;
+import xyz.loverbaby.api.dto.request.BuildRecordPageRequest;
 import xyz.loverbaby.api.dto.response.BuildRecordVO;
 import xyz.loverbaby.impl.dao.domain.BuildRecord;
 import xyz.loverbaby.impl.model.BuildRecordModel;
+import xyz.loverbaby.impl.model.BuildRecordPageQuery;
 
 import java.util.Objects;
 
@@ -55,6 +57,19 @@ public class BuildRecordConvert {
             BeanUtils.copyProperties(request, model);
         }
         return model;
+    }
+
+    /**
+     * requestToQuery
+     * @param request
+     * @return
+     */
+    public static BuildRecordPageQuery requestToQuery(BuildRecordPageRequest request) {
+        BuildRecordPageQuery query = new BuildRecordPageQuery();
+        if (Objects.nonNull(request)) {
+            BeanUtils.copyProperties(request, query);
+        }
+        return query;
     }
 
     /**

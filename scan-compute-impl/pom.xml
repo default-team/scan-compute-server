@@ -47,6 +47,11 @@
             <artifactId>scan-compute-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!-- eureka -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+        </dependency>
 
     </dependencies>
 

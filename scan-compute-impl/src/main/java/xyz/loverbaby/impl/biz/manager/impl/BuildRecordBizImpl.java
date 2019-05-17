@@ -3,11 +3,13 @@ package xyz.loverbaby.impl.biz.manager.impl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import xyz.loverbaby.api.dto.request.BuildRecordAddRequest;
-import xyz.loverbaby.api.dto.request.BuildRecordEditRequest;
-import xyz.loverbaby.api.dto.request.BuildRecordPageRequest;
+import xyz.loverbaby.api.dto.common.CommonResult;
 import xyz.loverbaby.api.dto.response.BuildRecordVO;
 import xyz.loverbaby.impl.biz.manager.BuildRecordBiz;
+import xyz.loverbaby.impl.convert.BuildRecordConvert;
+import xyz.loverbaby.impl.dao.domain.BuildRecord;
+import xyz.loverbaby.impl.model.BuildRecordModel;
+import xyz.loverbaby.impl.model.BuildRecordPageQuery;
 import xyz.loverbaby.impl.service.BuildRecordService;
 
 /**
@@ -24,24 +26,26 @@ public class BuildRecordBizImpl implements BuildRecordBiz {
     @Autowired
     private BuildRecordService buildRecordService;
 
-
     @Override
-    public IPage<BuildRecordVO> queryPage(BuildRecordPageRequest request) {
+    public IPage<BuildRecordVO> queryPage(BuildRecordPageQuery request) {
         return null;
     }
 
     @Override
-    public boolean insertCrawlerSkuBrand(BuildRecordAddRequest request) {
-        return false;
+    public CommonResult<Boolean> insert(BuildRecordModel request) {
+        CommonResult<Boolean> result = new CommonResult<>();
+        BuildRecord buildRecord = BuildRecordConvert.modelToDO(request);
+        result.setData(buildRecordService.save(buildRecord));
+        return result;
     }
 
     @Override
-    public boolean upCrawlerSkuBrand(BuildRecordEditRequest request) {
-        return false;
+    public CommonResult<Boolean> update(BuildRecordModel request) {
+        return null;
     }
 
     @Override
-    public boolean delCrawlerSkuBrand(BuildRecordEditRequest request) {
-        return false;
+    public CommonResult<Boolean> delete(Integer id) {
+        return null;
     }
 }

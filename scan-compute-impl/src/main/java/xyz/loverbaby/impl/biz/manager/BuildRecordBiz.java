@@ -3,10 +3,10 @@ package xyz.loverbaby.impl.biz.manager;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.stereotype.Service;
-import xyz.loverbaby.api.dto.request.BuildRecordAddRequest;
-import xyz.loverbaby.api.dto.request.BuildRecordEditRequest;
-import xyz.loverbaby.api.dto.request.BuildRecordPageRequest;
+import xyz.loverbaby.api.dto.common.CommonResult;
 import xyz.loverbaby.api.dto.response.BuildRecordVO;
+import xyz.loverbaby.impl.model.BuildRecordModel;
+import xyz.loverbaby.impl.model.BuildRecordPageQuery;
 
 /**
  * <p>
@@ -19,11 +19,11 @@ import xyz.loverbaby.api.dto.response.BuildRecordVO;
 @Service
 public interface BuildRecordBiz {
 
-    IPage<BuildRecordVO> queryPage(BuildRecordPageRequest request);
+    IPage<BuildRecordVO> queryPage(BuildRecordPageQuery request);
 
-    boolean insertCrawlerSkuBrand(BuildRecordAddRequest request);
+    CommonResult<Boolean> insert(BuildRecordModel request);
 
-    boolean upCrawlerSkuBrand(BuildRecordEditRequest request);
+    CommonResult<Boolean> update(BuildRecordModel request);
 
-    boolean delCrawlerSkuBrand(BuildRecordEditRequest request);
+    CommonResult<Boolean> delete(Integer id);
 }
