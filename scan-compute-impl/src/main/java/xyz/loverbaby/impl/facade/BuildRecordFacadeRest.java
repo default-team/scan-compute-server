@@ -35,9 +35,9 @@ public class BuildRecordFacadeRest implements BuildRecordFacade {
             }
 
             @Override
-            public CommonResult invoke() {
+            public void invoke() {
                 BuildRecordModel buildRecordModel = BuildRecordConvert.requestToModel(buildRecordAddRequest);
-                return buildRecordBiz.insert(buildRecordModel);
+                result.setData(buildRecordBiz.insert(buildRecordModel).getData());
             }
         });
         return result;

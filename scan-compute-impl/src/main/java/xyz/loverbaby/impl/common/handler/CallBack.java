@@ -19,6 +19,6 @@ public interface CallBack {
     /**
      * 业务逻辑
      */
-    CommonResult invoke();
+    void invoke();
 
 }

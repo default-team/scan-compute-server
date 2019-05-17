@@ -10,6 +10,7 @@ import java.util.Arrays;
  * @Created by yccao
  */
 public enum  ResultCodes {
+    OK("10000","成功"),
     PARAMETER_ERROR("100001","参数错误");
 
     private String code;

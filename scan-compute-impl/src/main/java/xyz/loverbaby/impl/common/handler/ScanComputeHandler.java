@@ -1,7 +1,6 @@
 package xyz.loverbaby.impl.common.handler;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import xyz.loverbaby.api.dto.common.CommonResult;
 import xyz.loverbaby.impl.excptions.BizException;
 import xyz.loverbaby.impl.common.enums.ResultCodes;
@@ -32,11 +31,9 @@ public class ScanComputeHandler {
         // 执行逻辑
         try {
 
-            CommonResult invoke = callBack.invoke();
-            BeanUtils.copyProperties(invoke, result);
-            if (!invoke.isSuccess()) {
-                log.error("{}.{}服务异常:cause:{}", restName, methodName, invoke.getMessage());
-            }
+            callBack.invoke();
+            result.setCode(ResultCodes.OK.getCode());
+            result.setSuccess(true);
         } catch (BizException e) {
             log.error("{}.{}服务异常: cause:{}", restName, methodName, e.getMessage());
             result.setCode(e.getErrCode());
