@@ -1,4 +1,4 @@
-package xyz.loverbaby.api.dto.api;
+package xyz.loverbaby.api;
 
 
 import org.springframework.cloud.netflix.feign.FeignClient;
