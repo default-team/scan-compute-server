@@ -3,6 +3,8 @@ package xyz.loverbaby.impl.facade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import xyz.loverbaby.api.BuildRecordFacade;
 import xyz.loverbaby.api.dto.common.CommonResult;
 import xyz.loverbaby.api.dto.request.BuildRecordAddRequest;
@@ -19,7 +21,8 @@ import xyz.loverbaby.impl.model.BuildRecordModel;
  * @Date 2019/5/17 下午1:55
  * @Created by yccao
  */
-@Service
+@RestController
+@RequestMapping("/scan/compute/server/buildRecord")
 public class BuildRecordFacadeRest implements BuildRecordFacade {
 
     @Autowired
@@ -42,6 +45,13 @@ public class BuildRecordFacadeRest implements BuildRecordFacade {
                 result.setData(buildRecordBiz.insert(buildRecordModel).getData());
             }
         });
+        return result;
+    }
+
+    @Override
+    public CommonResult<Boolean> get() {
+        CommonResult<Boolean> result = new CommonResult<>();
+        result.setMessage("hahahh");
         return result;
     }
 }
