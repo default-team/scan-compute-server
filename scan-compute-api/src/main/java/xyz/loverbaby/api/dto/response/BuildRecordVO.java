@@ -1,8 +1,8 @@
 package xyz.loverbaby.api.dto.response;
 
-import java.util.Date;
-
 import lombok.Data;
+
+import java.util.Date;
 
 /**
  * <p>

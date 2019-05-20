@@ -1,7 +1,5 @@
 package xyz.loverbaby.api.dto.request;
 
-import java.util.Date;
-
 import lombok.Data;
 
 /**

@@ -9,10 +9,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import xyz.loverbaby.api.dto.common.CommonResult;
 import xyz.loverbaby.api.dto.request.BuildRecordAddRequest;
 
-import java.util.Date;
-
-import static org.junit.Assert.*;
-
 /**
  * @Classname BuildRecordFacadeRestTest
  * @Description
