@@ -1,8 +1,9 @@
 package xyz.loverbaby.impl.dao.domain;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.Date;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -48,12 +49,12 @@ public class BuildRecord implements Serializable {
     /**
      * 创建时间
      */
-    private LocalDateTime createDatetime;
+    private Date createDatetime;
 
     /**
      * 更新时间
      */
-    private LocalDateTime updateDatetime;
+    private Date updateDatetime;
 
     /**
      * 状态 -1：已废弃，0：正常

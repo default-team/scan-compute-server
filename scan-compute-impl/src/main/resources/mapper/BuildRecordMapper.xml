@@ -3,7 +3,7 @@
 <mapper namespace="xyz.loverbaby.mapper.BuildRecordMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="xyz.loverbaby.entity.BuildRecord">
+    <resultMap id="BaseResultMap" type="xyz.loverbaby.impl.dao.domain.BuildRecord">
     <result column="id" property="id" />
         <result column="project_name" property="projectName" />
         <result column="result" property="result" />

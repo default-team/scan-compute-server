@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
  */
 @Data
 
-public class BuildRecordModel {
+public class BuildRecordModel extends BaseModel{
 
     private static final long serialVersionUID = 1L;
 
@@ -39,19 +39,7 @@ public class BuildRecordModel {
     private String description;
 
     /**
-     * 创建时间
+     * 详情id
      */
-    private LocalDateTime createDatetime;
-
-    /**
-     * 更新时间
-     */
-    private LocalDateTime updateDatetime;
-
-    /**
-     * 状态 -1：已废弃，0：正常
-     */
-    private Integer status;
-
     private Integer detailId;
 }

@@ -4,6 +4,7 @@ import org.springframework.beans.BeanUtils;
 import xyz.loverbaby.api.dto.request.BuildRecordAddRequest;
 import xyz.loverbaby.api.dto.request.BuildRecordPageRequest;
 import xyz.loverbaby.api.dto.response.BuildRecordVO;
+import xyz.loverbaby.impl.common.enums.StatusEnum;
 import xyz.loverbaby.impl.dao.domain.BuildRecord;
 import xyz.loverbaby.impl.model.BuildRecordModel;
 import xyz.loverbaby.impl.model.BuildRecordPageQuery;
@@ -29,6 +30,7 @@ public class BuildRecordConvert {
         BuildRecord entityDo = new BuildRecord();
         if (Objects.nonNull(model)) {
             BeanUtils.copyProperties(model, entityDo);
+            entityDo.setStatus(StatusEnum.valueOf(model.getStatus()).getCode());
         }
         return entityDo;
     }

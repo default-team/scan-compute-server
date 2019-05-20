@@ -37,21 +37,6 @@ public class BuildRecordAddRequest extends BaseRequest{
     private String description;
 
     /**
-     * 创建时间
-     */
-    private Date createDatetime;
-
-    /**
-     * 更新时间
-     */
-    private Date updateDatetime;
-
-    /**
-     * 状态 -1：已废弃，0：正常
-     */
-    private Integer status;
-
-    /**
      * 详情id
      */
     private Integer detailId;

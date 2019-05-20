@@ -1,5 +1,6 @@
 package xyz.loverbaby.impl.facade;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import xyz.loverbaby.api.BuildRecordFacade;
@@ -21,12 +22,13 @@ import xyz.loverbaby.impl.model.BuildRecordModel;
 @Service
 public class BuildRecordFacadeRest implements BuildRecordFacade {
 
+    @Autowired
     private BuildRecordBiz buildRecordBiz;
 
     @Override
     public CommonResult<Boolean> insertBuildRecord(@RequestBody BuildRecordAddRequest buildRecordAddRequest) {
         CommonResult<Boolean> result = new CommonResult<>();
-        ScanComputeHandler.execute(result, new CallBack() {
+        ScanComputeHandler.execute(buildRecordAddRequest,result, new CallBack() {
             @Override
             public void check() {
                 ArgumentVerify.assertParam(buildRecordAddRequest.getProjectName()!= null, "项目名称为空");
