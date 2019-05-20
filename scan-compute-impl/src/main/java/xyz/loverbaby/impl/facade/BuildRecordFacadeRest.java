@@ -8,11 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 import xyz.loverbaby.api.BuildRecordFacade;
 import xyz.loverbaby.api.dto.common.CommonResult;
 import xyz.loverbaby.api.dto.request.BuildRecordAddRequest;
+import xyz.loverbaby.api.dto.request.BuildRecordDeleteRequest;
+import xyz.loverbaby.api.dto.request.BuildRecordEditRequest;
 import xyz.loverbaby.impl.biz.manager.BuildRecordBiz;
 import xyz.loverbaby.impl.common.handler.CallBack;
 import xyz.loverbaby.impl.common.handler.ScanComputeHandler;
 import xyz.loverbaby.impl.common.verify.ArgumentVerify;
 import xyz.loverbaby.impl.convert.BuildRecordConvert;
+import xyz.loverbaby.impl.model.BuildRecordDeleteModel;
+import xyz.loverbaby.impl.model.BuildRecordEditModel;
 import xyz.loverbaby.impl.model.BuildRecordModel;
 
 /**
@@ -54,4 +58,53 @@ public class BuildRecordFacadeRest implements BuildRecordFacade {
         result.setMessage("hahahh");
         return result;
     }
+
+
+    /**
+     *  修改方法
+     * @param buildRecordEditRequest
+     * @return
+     */
+    @Override
+    public CommonResult<Boolean> updateBuildRecord(@RequestBody BuildRecordEditRequest buildRecordEditRequest) {
+        CommonResult<Boolean> result = new CommonResult<>();
+        ScanComputeHandler.execute(buildRecordEditRequest,result, new CallBack() {
+            @Override
+            public void check() {
+                ArgumentVerify.assertParam(buildRecordEditRequest.getProjectName()!= null, "项目名称为空");
+                ArgumentVerify.assertParam(buildRecordEditRequest.getInsecurity()!= null, "目标jar为空");
+                ArgumentVerify.assertParam(buildRecordEditRequest.getDetailId()!= null, "详情id为空");
+            }
+
+            @Override
+            public void invoke() {
+                BuildRecordEditModel buildRecordEditModel = BuildRecordConvert.requestToModel(buildRecordEditRequest);
+                result.setData(buildRecordBiz.update(buildRecordEditModel).getData());
+            }
+        });
+        return result;
+    }
+
+    /**
+     *  删除方法
+     * @param buildRecordDeleteRequest
+     * @return
+     */
+    @Override
+    public CommonResult<Boolean> deleteBuildRecord(@RequestBody BuildRecordDeleteRequest buildRecordDeleteRequest) {
+        CommonResult<Boolean> result = new CommonResult<>();
+        ScanComputeHandler.execute(buildRecordDeleteRequest,result, new CallBack() {
+            @Override
+            public void check() {
+                ArgumentVerify.assertParam(buildRecordDeleteRequest.getId()!= null, "id为空");
+            }
+
+            @Override
+            public void invoke() {
+                result.setData(buildRecordBiz.delete(buildRecordDeleteRequest.getId()).getData());
+            }
+        });
+        return result;
+    }
+
 }
