@@ -27,16 +27,22 @@ public class ScanComputeHandler {
         String req = JSON.toJSONString(request);
         strBuff.append("服务被调用==").append(serviceName).append(";请求数据==").append(req).append(";");
         //校验参数
+        long checkStartTime = System.currentTimeMillis();
         try {
-            long checkStartTime = System.currentTimeMillis();
             callBack.check();
-            strBuff.append("检查数据合法性耗时==").append(System.currentTimeMillis() - checkStartTime).append("ms;");
         } catch (BizException e) {
-            log.error("参数=={}.{}异常:cause:{}", restName, methodName, e.getMessage());
             result.setSuccess(false);
-            result.setMessage(e.getMessage());
+            result.setMessage(e.getMsg());
             result.setCode(ResultCodes.PARAMETER_ERROR.getCode());
+            strBuff.append("参数异常=="+e.getMsg());
+            strBuff.append(";共耗时==").append(System.currentTimeMillis() - startTime).append("ms");
+            strBuff.append(";response==" + JSON.toJSONString(result));
+            strBuff.append("检查数据合法性耗时==").append(System.currentTimeMillis() - checkStartTime).append("ms;");
+            log.info(strBuff.toString());
+            return;
         }
+
+
         // 执行逻辑
         try {
 
@@ -47,7 +53,7 @@ public class ScanComputeHandler {
         } catch (BizException e) {
             log.error("服务=={}.{}异常: cause:{}", restName, methodName, e.getMessage());
             result.setCode(e.getErrCode());
-            result.setMessage(e.getMessage());
+            result.setMessage(e.getMsg());
             result.setSuccess(false);
         } catch (Exception e) {
             log.error("服务=={}.{}异常:cause:{}", restName, methodName, e.getMessage());
