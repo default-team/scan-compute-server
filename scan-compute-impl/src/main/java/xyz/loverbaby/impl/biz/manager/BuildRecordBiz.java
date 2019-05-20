@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.stereotype.Service;
 import xyz.loverbaby.api.dto.common.CommonResult;
 import xyz.loverbaby.api.dto.response.BuildRecordVO;
+import xyz.loverbaby.impl.model.BuildRecordEditModel;
 import xyz.loverbaby.impl.model.BuildRecordModel;
 import xyz.loverbaby.impl.model.BuildRecordPageQuery;
 
@@ -23,7 +24,7 @@ public interface BuildRecordBiz {
 
     CommonResult<Boolean> insert(BuildRecordModel request);
 
-    CommonResult<Boolean> update(BuildRecordModel request);
+    CommonResult<Boolean> update(BuildRecordEditModel request);
 
     CommonResult<Boolean> delete(Integer id);
 }

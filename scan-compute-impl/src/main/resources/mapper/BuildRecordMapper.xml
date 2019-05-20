@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="xyz.loverbaby.mapper.BuildRecordMapper">
+<mapper namespace="xyz.loverbaby.impl.dao.mapper.BuildRecordMapper">
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="xyz.loverbaby.impl.dao.domain.BuildRecord">
@@ -21,4 +21,21 @@
         project_name, result, insecurity, description, create_datetime, update_datetime, status, detail_id
     </sql>
 
+    <!--修改-->
+    <update id="updateById" parameterType="xyz.loverbaby.impl.dao.domain.BuildRecord">
+        update scan_build_record set
+        project_name = #{projectName},
+        result = #{result},
+        insecurity = #{insecurity},
+        description = #{description},
+        update_datetime = now(),
+        status = #{status},
+        detail_id = #{detailId}
+        where id = #{id}
+    </update>
+
+    <!--删除-->
+    <delete id="removeById" >
+        delete from scan_build_record where id = #{id}
+    </delete>
 </mapper>

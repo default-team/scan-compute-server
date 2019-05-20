@@ -1,8 +1,6 @@
-package xyz.loverbaby.api.dto.request;
+package xyz.loverbaby.impl.model;
 
 import lombok.Data;
-
-import java.util.Date;
 
 /**
  * <p>
@@ -13,12 +11,10 @@ import java.util.Date;
  * @since 2019-05-16
  */
 @Data
-public class BuildRecordEditRequest extends BaseRequest{
 
-    /**
-     * id
-     */
-    private Long id;
+public class BuildRecordEditModel extends BaseModel{
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * 项目名称
@@ -41,19 +37,7 @@ public class BuildRecordEditRequest extends BaseRequest{
     private String description;
 
     /**
-     * 创建时间
+     * 详情id
      */
-    private Date createDatetime;
-
-    /**
-     * 更新时间
-     */
-    private Date updateDatetime;
-
-    /**
-     * 状态 -1：已废弃，0：正常
-     */
-    private Integer status;
-
     private Integer detailId;
 }

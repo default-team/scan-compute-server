@@ -8,6 +8,7 @@ import xyz.loverbaby.api.dto.response.BuildRecordVO;
 import xyz.loverbaby.impl.biz.manager.BuildRecordBiz;
 import xyz.loverbaby.impl.convert.BuildRecordConvert;
 import xyz.loverbaby.impl.dao.domain.BuildRecord;
+import xyz.loverbaby.impl.model.BuildRecordEditModel;
 import xyz.loverbaby.impl.model.BuildRecordModel;
 import xyz.loverbaby.impl.model.BuildRecordPageQuery;
 import xyz.loverbaby.impl.service.BuildRecordService;
@@ -40,12 +41,17 @@ public class BuildRecordBizImpl implements BuildRecordBiz {
     }
 
     @Override
-    public CommonResult<Boolean> update(BuildRecordModel request) {
-        return null;
+    public CommonResult<Boolean> update(BuildRecordEditModel request) {
+        CommonResult<Boolean> result = new CommonResult<>();
+        BuildRecord buildRecord = BuildRecordConvert.modelToDO(request);
+        result.setData(buildRecordService.updateById(buildRecord));
+        return result;
     }
 
     @Override
     public CommonResult<Boolean> delete(Integer id) {
+        CommonResult<Boolean> result = new CommonResult<>();
+        result.setData(buildRecordService.removeById(id));
         return null;
     }
 }
