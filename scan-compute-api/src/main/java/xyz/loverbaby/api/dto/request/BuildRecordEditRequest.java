@@ -13,7 +13,7 @@ import java.util.Date;
  * @since 2019-05-16
  */
 @Data
-public class BuildRecordEditRequest {
+public class BuildRecordEditRequest extends BaseRequest{
 
 
     /**

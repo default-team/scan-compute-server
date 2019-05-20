@@ -1,7 +1,6 @@
 package xyz.loverbaby.impl.common.handler;
 
 
-import xyz.loverbaby.api.dto.common.CommonResult;
 
 /**
  * @Classname CallBack

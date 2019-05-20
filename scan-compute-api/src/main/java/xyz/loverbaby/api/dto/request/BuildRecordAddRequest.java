@@ -13,7 +13,7 @@ import lombok.Data;
  * @since 2019-05-16
  */
 @Data
-public class BuildRecordAddRequest {
+public class BuildRecordAddRequest extends BaseRequest{
 
 
     /**
@@ -51,5 +51,8 @@ public class BuildRecordAddRequest {
      */
     private Integer status;
 
+    /**
+     * 详情id
+     */
     private Integer detailId;
 }
