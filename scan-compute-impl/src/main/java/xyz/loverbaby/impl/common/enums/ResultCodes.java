@@ -11,7 +11,8 @@ import java.util.Arrays;
  */
 public enum  ResultCodes {
     OK("10000","成功"),
-    PARAMETER_ERROR("100001","参数错误");
+    PARAMETER_ERROR("100001","参数错误"),
+    UNKNOWN_ERROR("100002","未知错误");
 
     private String code;
     private String desc;
