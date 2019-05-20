@@ -1,7 +1,6 @@
 package xyz.loverbaby.impl.facade;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +14,6 @@ import xyz.loverbaby.impl.common.handler.CallBack;
 import xyz.loverbaby.impl.common.handler.ScanComputeHandler;
 import xyz.loverbaby.impl.common.verify.ArgumentVerify;
 import xyz.loverbaby.impl.convert.BuildRecordConvert;
-import xyz.loverbaby.impl.model.BuildRecordDeleteModel;
 import xyz.loverbaby.impl.model.BuildRecordEditModel;
 import xyz.loverbaby.impl.model.BuildRecordModel;
 
