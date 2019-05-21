@@ -1,21 +1,31 @@
 package xyz.loverbaby.impl.facade;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xyz.loverbaby.api.BuildRecordFacade;
 import xyz.loverbaby.api.dto.common.CommonResult;
+import xyz.loverbaby.api.dto.common.Page;
 import xyz.loverbaby.api.dto.request.BuildRecordAddRequest;
 import xyz.loverbaby.api.dto.request.BuildRecordDeleteRequest;
 import xyz.loverbaby.api.dto.request.BuildRecordEditRequest;
+import xyz.loverbaby.api.dto.request.BuildRecordPageRequest;
+import xyz.loverbaby.api.dto.response.BuildRecordVO;
 import xyz.loverbaby.impl.biz.manager.BuildRecordBiz;
 import xyz.loverbaby.impl.common.handler.CallBack;
 import xyz.loverbaby.impl.common.handler.ScanComputeHandler;
 import xyz.loverbaby.impl.common.verify.ArgumentVerify;
 import xyz.loverbaby.impl.convert.BuildRecordConvert;
+import xyz.loverbaby.impl.dao.domain.BuildRecord;
 import xyz.loverbaby.impl.model.BuildRecordEditModel;
 import xyz.loverbaby.impl.model.BuildRecordModel;
+import xyz.loverbaby.impl.model.BuildRecordPageQuery;
+import xyz.loverbaby.impl.utils.PageUtils;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Classname BuildRecordFacadeRest
@@ -51,9 +61,26 @@ public class BuildRecordFacadeRest implements BuildRecordFacade {
     }
 
     @Override
-    public CommonResult<Boolean> get() {
-        CommonResult<Boolean> result = new CommonResult<>();
-        result.setMessage("hahahh");
+    public CommonResult<Page<BuildRecordVO>> listBuildRecordByPage(BuildRecordPageRequest buildRecordPageRequest) {
+        CommonResult<Page<BuildRecordVO>> result = new CommonResult<>();
+        ScanComputeHandler.execute(buildRecordPageRequest, result, new CallBack() {
+            @Override
+            public void check() {
+
+            }
+
+            @Override
+            public void invoke() {
+                PageUtils.defaultPage(buildRecordPageRequest);
+                BuildRecordPageQuery pageQuery = BuildRecordConvert.requestToQuery(buildRecordPageRequest);
+                IPage<BuildRecord> voiPage = buildRecordBiz.queryPage(pageQuery);
+                Page<BuildRecordVO> buildRecordPage = new Page<>(buildRecordPageRequest.getPageSize(), buildRecordPageRequest.getPageSize(), voiPage.getTotal());
+                List<BuildRecordVO> buildRecordVOS = voiPage.getRecords().stream().map(BuildRecordConvert::doToVO).collect(Collectors.toList());
+                buildRecordPage.setList(buildRecordVOS);
+                result.setData(buildRecordPage);
+
+            }
+        });
         return result;
     }
 

@@ -34,7 +34,6 @@ public class BuildRecordConvert {
         BuildRecord entityDo = new BuildRecord();
         if (Objects.nonNull(model)) {
             BeanUtils.copyProperties(model, entityDo);
-            entityDo.setStatus(StatusEnum.valueOf(model.getStatus()).getCode());
         }
         return entityDo;
     }

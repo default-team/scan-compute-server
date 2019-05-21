@@ -15,7 +15,10 @@ import java.util.Date;
 @Data
 public class BuildRecordVO {
 
-
+    /**
+     * id
+     */
+    private Long id;
     /**
      * 项目名称
      */
@@ -47,9 +50,7 @@ public class BuildRecordVO {
     private Date updateDatetime;
 
     /**
-     * 状态 -1：已废弃，0：正常
+     * 详情id
      */
-    private Integer status;
-
     private Integer detailId;
 }

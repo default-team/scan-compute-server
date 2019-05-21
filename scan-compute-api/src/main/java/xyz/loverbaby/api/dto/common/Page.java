@@ -31,6 +31,17 @@ public class Page <T>{
         }
 
     }
+    public Page(Integer pageNo, Integer pageSize, Long totalCount) {
+        this.pageNo = pageNo;
+        this.pageSize = pageSize;
+        this.totalCount = totalCount;
+        if (totalCount != null && pageSize != null && pageSize != 0) {
+            this.pageCount = totalCount % (long)pageSize > 0L ? totalCount / (long)pageSize + 1L : totalCount / (long)pageSize;
+        } else {
+            this.pageCount = 1L;
+        }
+
+    }
 
 
 }

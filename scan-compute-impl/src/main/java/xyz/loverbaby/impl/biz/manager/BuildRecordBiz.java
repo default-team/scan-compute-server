@@ -4,7 +4,8 @@ package xyz.loverbaby.impl.biz.manager;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.stereotype.Service;
 import xyz.loverbaby.api.dto.common.CommonResult;
-import xyz.loverbaby.api.dto.response.BuildRecordVO;
+
+import xyz.loverbaby.impl.dao.domain.BuildRecord;
 import xyz.loverbaby.impl.model.BuildRecordEditModel;
 import xyz.loverbaby.impl.model.BuildRecordModel;
 import xyz.loverbaby.impl.model.BuildRecordPageQuery;
@@ -20,7 +21,7 @@ import xyz.loverbaby.impl.model.BuildRecordPageQuery;
 @Service
 public interface BuildRecordBiz {
 
-    IPage<BuildRecordVO> queryPage(BuildRecordPageQuery request);
+    IPage<BuildRecord> queryPage(BuildRecordPageQuery request);
 
     CommonResult<Boolean> insert(BuildRecordModel request);
 

@@ -13,7 +13,7 @@ import java.util.Date;
  * @since 2019-05-16
  */
 @Data
-public class BuildRecordPageRequest extends BaseRequest{
+public class BuildRecordPageRequest extends PageRequest{
 
 
     /**
@@ -46,10 +46,6 @@ public class BuildRecordPageRequest extends BaseRequest{
      */
     private Date updateDatetime;
 
-    /**
-     * 状态 -1：已废弃，0：正常
-     */
-    private Integer status;
 
     private Integer detailId;
 }
