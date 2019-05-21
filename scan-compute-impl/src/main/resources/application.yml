@@ -28,7 +28,7 @@ mybatis-plus:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://114.116.84.68:8761/eureka/
 
 feign:
   hystrix:

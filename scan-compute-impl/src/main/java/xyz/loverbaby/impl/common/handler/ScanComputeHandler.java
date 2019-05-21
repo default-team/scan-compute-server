@@ -34,10 +34,10 @@ public class ScanComputeHandler {
             result.setSuccess(false);
             result.setMessage(e.getMsg());
             result.setCode(ResultCodes.PARAMETER_ERROR.getCode());
-            strBuff.append("参数异常=="+e.getMsg());
-            strBuff.append(";共耗时==").append(System.currentTimeMillis() - startTime).append("ms");
-            strBuff.append(";response==" + JSON.toJSONString(result));
+            strBuff.append("参数异常==").append(e.getMsg());
             strBuff.append("检查数据合法性耗时==").append(System.currentTimeMillis() - checkStartTime).append("ms;");
+            strBuff.append(";共耗时==").append(System.currentTimeMillis() - startTime).append("ms");
+            strBuff.append(";response==").append(JSON.toJSONString(result));
             log.info(strBuff.toString());
             return;
         }
@@ -62,7 +62,7 @@ public class ScanComputeHandler {
         }
 
         strBuff.append(";共耗时==").append(System.currentTimeMillis() - startTime).append("ms");
-        strBuff.append(";response==" + JSON.toJSONString(result));
+        strBuff.append(";response==").append(JSON.toJSONString(result));
         log.info(strBuff.toString());
 
     }
