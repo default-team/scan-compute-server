@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import xyz.loverbaby.api.dto.common.CommonResult;
 import xyz.loverbaby.api.dto.common.Page;
 import xyz.loverbaby.api.dto.request.BuildRecordAddRequest;
-import xyz.loverbaby.api.dto.request.BuildRecordDeleteRequest;
 import xyz.loverbaby.api.dto.request.BuildRecordEditRequest;
 import xyz.loverbaby.api.dto.request.BuildRecordPageRequest;
 import xyz.loverbaby.api.dto.response.BuildRecordVO;
@@ -32,6 +31,4 @@ public interface BuildRecordFacade {
     @PostMapping("/:updateForBuild")
     CommonResult<Boolean> updateBuildRecord(@RequestBody BuildRecordEditRequest buildRecordEditRequest);
 
-    @PostMapping("/:deleteForBuild")
-    CommonResult<Boolean> deleteBuildRecord(@RequestBody BuildRecordDeleteRequest buildRecordDeleteRequest);
 }

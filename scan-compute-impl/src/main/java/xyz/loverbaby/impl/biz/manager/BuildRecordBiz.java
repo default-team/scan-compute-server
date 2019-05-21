@@ -27,5 +27,4 @@ public interface BuildRecordBiz {
 
     CommonResult<Boolean> update(BuildRecordEditModel request);
 
-    CommonResult<Boolean> delete(Integer id);
 }

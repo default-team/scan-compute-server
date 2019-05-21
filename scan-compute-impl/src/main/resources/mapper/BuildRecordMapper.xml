@@ -21,21 +21,4 @@
         project_name, result, insecurity, description, create_datetime, update_datetime, status, detail_id
     </sql>
 
-    <!--修改-->
-    <update id="updateById" parameterType="xyz.loverbaby.impl.dao.domain.BuildRecord">
-        update scan_build_record set
-        project_name = #{projectName},
-        result = #{result},
-        insecurity = #{insecurity},
-        description = #{description},
-        update_datetime = now(),
-        status = #{status},
-        detail_id = #{detailId}
-        where id = #{id}
-    </update>
-
-    <!--删除-->
-    <delete id="removeById" >
-        delete from scan_build_record where id = #{id}
-    </delete>
 </mapper>

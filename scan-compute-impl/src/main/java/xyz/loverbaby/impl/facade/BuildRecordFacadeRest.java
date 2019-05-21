@@ -9,7 +9,6 @@ import xyz.loverbaby.api.BuildRecordFacade;
 import xyz.loverbaby.api.dto.common.CommonResult;
 import xyz.loverbaby.api.dto.common.Page;
 import xyz.loverbaby.api.dto.request.BuildRecordAddRequest;
-import xyz.loverbaby.api.dto.request.BuildRecordDeleteRequest;
 import xyz.loverbaby.api.dto.request.BuildRecordEditRequest;
 import xyz.loverbaby.api.dto.request.BuildRecordPageRequest;
 import xyz.loverbaby.api.dto.response.BuildRecordVO;
@@ -96,37 +95,13 @@ public class BuildRecordFacadeRest implements BuildRecordFacade {
         ScanComputeHandler.execute(buildRecordEditRequest,result, new CallBack() {
             @Override
             public void check() {
-                ArgumentVerify.assertParam(buildRecordEditRequest.getProjectName()!= null, "项目名称为空");
-                ArgumentVerify.assertParam(buildRecordEditRequest.getInsecurity()!= null, "目标jar为空");
-                ArgumentVerify.assertParam(buildRecordEditRequest.getDetailId()!= null, "详情id为空");
+                ArgumentVerify.assertParam(buildRecordEditRequest.getId()!= null, "项目id为空");
             }
 
             @Override
             public void invoke() {
                 BuildRecordEditModel buildRecordEditModel = BuildRecordConvert.requestToModel(buildRecordEditRequest);
                 result.setData(buildRecordBiz.update(buildRecordEditModel).getData());
-            }
-        });
-        return result;
-    }
-
-    /**
-     *  删除方法
-     * @param buildRecordDeleteRequest
-     * @return
-     */
-    @Override
-    public CommonResult<Boolean> deleteBuildRecord(@RequestBody BuildRecordDeleteRequest buildRecordDeleteRequest) {
-        CommonResult<Boolean> result = new CommonResult<>();
-        ScanComputeHandler.execute(buildRecordDeleteRequest,result, new CallBack() {
-            @Override
-            public void check() {
-                ArgumentVerify.assertParam(buildRecordDeleteRequest.getId()!= null, "id为空");
-            }
-
-            @Override
-            public void invoke() {
-                result.setData(buildRecordBiz.delete(buildRecordDeleteRequest.getId()).getData());
             }
         });
         return result;
