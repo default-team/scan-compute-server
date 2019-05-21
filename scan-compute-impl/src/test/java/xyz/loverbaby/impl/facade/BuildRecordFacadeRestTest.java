@@ -9,7 +9,6 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.test.context.junit4.SpringRunner;
 import xyz.loverbaby.api.dto.common.CommonResult;
 import xyz.loverbaby.api.dto.request.BuildRecordAddRequest;
-import xyz.loverbaby.api.dto.request.BuildRecordDeleteRequest;
 import xyz.loverbaby.api.dto.request.BuildRecordEditRequest;
 
 /**
@@ -41,23 +40,11 @@ public class BuildRecordFacadeRestTest {
     @Test
     public void updateBuildRecord() {
         BuildRecordEditRequest request = new BuildRecordEditRequest();
-        request.setProjectName("gtr");
-        request.setDescription("desc");
-        request.setInsecurity("<project></project>");
-        request.setDetailId(1);
         request.setResult("success");
         request.setId(1L);
-        request.setStatus(0);
         CommonResult<Boolean> result = buildRecordFacadeRest.updateBuildRecord(request);
         Assert.assertTrue(result.isSuccess());
     }
 
 
-    @Test
-    public void deleteBuildRecord() {
-        BuildRecordDeleteRequest request = new BuildRecordDeleteRequest();
-        request.setId(1);
-        CommonResult<Boolean> result = buildRecordFacadeRest.deleteBuildRecord(request);
-        Assert.assertTrue(result.isSuccess());
-    }
 }

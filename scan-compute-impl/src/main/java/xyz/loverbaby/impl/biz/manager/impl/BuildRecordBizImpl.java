@@ -44,14 +44,10 @@ public class BuildRecordBizImpl implements BuildRecordBiz {
     public CommonResult<Boolean> update(BuildRecordEditModel request) {
         CommonResult<Boolean> result = new CommonResult<>();
         BuildRecord buildRecord = BuildRecordConvert.modelToDO(request);
+        buildRecord = buildRecordService.getById(buildRecord.getId());
+        buildRecord.setResult(request.getResult());
         result.setData(buildRecordService.updateById(buildRecord));
         return result;
     }
 
-    @Override
-    public CommonResult<Boolean> delete(Integer id) {
-        CommonResult<Boolean> result = new CommonResult<>();
-        result.setData(buildRecordService.removeById(id));
-        return null;
-    }
 }
