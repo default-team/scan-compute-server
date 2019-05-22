@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import xyz.loverbaby.api.dto.common.CommonResult;
 import xyz.loverbaby.api.dto.request.BaseRequest;
-import xyz.loverbaby.impl.common.enums.ResultCodes;
+import xyz.loverbaby.api.enums.ResultCodes;
 import xyz.loverbaby.impl.excptions.BizException;
 
 /**

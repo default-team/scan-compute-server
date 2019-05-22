@@ -2,7 +2,6 @@ package xyz.loverbaby.api;
 
 
 import org.springframework.cloud.netflix.feign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import xyz.loverbaby.api.dto.common.CommonResult;
@@ -24,8 +23,8 @@ public interface BuildRecordFacade {
     @PostMapping("/:saveForBuild")
     CommonResult<Boolean> insertBuildRecord(@RequestBody BuildRecordAddRequest buildRecordAddRequest);
 
-    @GetMapping("/:query")
-    CommonResult<Page<BuildRecordVO>> listBuildRecordByPage(BuildRecordPageRequest buildRecordPageRequest);
+    @PostMapping("/:query")
+    CommonResult<Page<BuildRecordVO>> listBuildRecordByPage(@RequestBody BuildRecordPageRequest buildRecordPageRequest);
 
 
     @PostMapping("/:updateForBuild")

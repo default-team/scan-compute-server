@@ -43,5 +43,6 @@ public class Page <T>{
 
     }
 
-
+    public Page() {
+    }
 }

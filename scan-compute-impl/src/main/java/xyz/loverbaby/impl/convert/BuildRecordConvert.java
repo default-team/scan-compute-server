@@ -5,7 +5,6 @@ import xyz.loverbaby.api.dto.request.BuildRecordAddRequest;
 import xyz.loverbaby.api.dto.request.BuildRecordEditRequest;
 import xyz.loverbaby.api.dto.request.BuildRecordPageRequest;
 import xyz.loverbaby.api.dto.response.BuildRecordVO;
-import xyz.loverbaby.impl.common.enums.StatusEnum;
 import xyz.loverbaby.impl.dao.domain.BuildRecord;
 import xyz.loverbaby.impl.model.BuildRecordEditModel;
 import xyz.loverbaby.impl.model.BuildRecordModel;

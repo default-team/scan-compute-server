@@ -1,4 +1,4 @@
-package xyz.loverbaby.impl.common.enums;
+package xyz.loverbaby.api.enums;
 
 import java.util.Arrays;
 

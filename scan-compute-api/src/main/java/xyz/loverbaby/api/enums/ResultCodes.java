@@ -1,4 +1,4 @@
-package xyz.loverbaby.impl.common.enums;
+package xyz.loverbaby.api.enums;
 
 
 import java.util.Arrays;
@@ -12,7 +12,10 @@ import java.util.Arrays;
 public enum  ResultCodes {
     OK("10000","成功"),
     PARAMETER_ERROR("100001","参数错误"),
-    UNKNOWN_ERROR("100002","未知错误");
+    UNKNOWN_ERROR("100002","未知错误"),
+    BUSINESS_ERROR("100003","参数错误");
+
+
 
     private String code;
     private String desc;

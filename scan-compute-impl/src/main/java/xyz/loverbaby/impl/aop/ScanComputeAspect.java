@@ -6,7 +6,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
-import xyz.loverbaby.impl.common.enums.StatusEnum;
+import xyz.loverbaby.api.enums.StatusEnum;
 import xyz.loverbaby.impl.model.BaseModel;
 
 import java.util.Date;
