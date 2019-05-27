@@ -9,53 +9,47 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.test.context.junit4.SpringRunner;
 import xyz.loverbaby.api.dto.common.CommonResult;
 import xyz.loverbaby.api.dto.common.Page;
-import xyz.loverbaby.api.dto.request.BuildRecordAddRequest;
-import xyz.loverbaby.api.dto.request.BuildRecordEditRequest;
-import xyz.loverbaby.api.dto.request.BuildRecordPageRequest;
+import xyz.loverbaby.api.dto.request.*;
 import xyz.loverbaby.api.dto.response.BuildRecordVO;
 
 /**
- * @Classname BuildRecordFacadeRestTest
+ * @Classname PomDetailFacadeRestTest
  * @Description
- * @Date 2019/5/20 上午10:02
- * @Created by yccao
+ * @Date 2019/5/23 上午23:33
+ * @Created by Minghao Sun
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @EnableEurekaClient
-public class BuildRecordFacadeRestTest {
+public class PomDetailFacadeRestTest {
 
     @Autowired
-    private BuildRecordFacadeRest buildRecordFacadeRest;
+    private PomDetailFacadeRest pomDetailFacadeRest;
 
     @Test
-    public void insertBuildRecord() {
-        BuildRecordAddRequest request = new BuildRecordAddRequest();
-        request.setProjectName("gtr");
-        request.setDescription("desc");
-        request.setInsecurity("<project></project>");
-        request.setDetailId(2);
-        request.setResult("success");
-        CommonResult<Boolean> result = buildRecordFacadeRest.insertBuildRecord(request);
+    public void insertPomDetail() {
+        PomDetailAddRequest request = new PomDetailAddRequest();
+        request.setPom("<properties></properties>");
+        CommonResult<Boolean> result = pomDetailFacadeRest.insertPomDetail(request);
         Assert.assertTrue(result.isSuccess());
     }
 
     @Test
-    public void updateBuildRecord() {
-        BuildRecordEditRequest request = new BuildRecordEditRequest();
-        request.setResult("success");
+    public void updatePomDetail() {
+        PomDetailEditRequest request = new PomDetailEditRequest();
+        request.setPom("<properties>success</properties>");
         request.setId(1L);
-        CommonResult<Boolean> result = buildRecordFacadeRest.updateBuildRecord(request);
+        CommonResult<Boolean> result = pomDetailFacadeRest.updatePomDetail(request);
         Assert.assertTrue(result.isSuccess());
     }
 
 
 
-    @Test
+/*    @Test
     public void queryBuildRecordPage() {
         BuildRecordPageRequest buildRecordPageRequest = new BuildRecordPageRequest();
         CommonResult<Page<BuildRecordVO>> result = buildRecordFacadeRest.listBuildRecordByPage(buildRecordPageRequest);
         Assert.assertTrue(result.isSuccess());
-    }
+    }*/
 
 }
